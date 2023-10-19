@@ -1,0 +1,9 @@
+/background-image-file     /home/sandy/Pictures/nord-arch.png
+/background-image-shading  0.000000
+/background-image-style    TERMINAL_BACKGROUND_STYLE_STRETCHED
+/background-mode           TERMINAL_BACKGROUND_IMAGE
+/font-name                 Cascadia Mono PL 14
+/kinetic-scrolling         true
+/misc-cursor-blinks        true
+/misc-cursor-shape         TERMINAL_CURSOR_SHAPE_IBEAM
+/scrolling-unlimited       true
