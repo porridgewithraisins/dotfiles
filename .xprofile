@@ -1,0 +1,4 @@
+export EDITOR=nano
+export QT_SCALE_FACTOR=1.75
+export PATH="$PATH:/home/sandy/scripts"
+export PATH="$PATH:/home/sandy/.local/bin"

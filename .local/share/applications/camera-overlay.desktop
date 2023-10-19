@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Camera Overlay
+Comment=Shows the camera
+Exec=ffplay -noborder -alwaysontop /dev/video0
+Icon=camera-video
+Terminal=false
+Type=Application
+Categories=AudioVideo;
+Keywords=webcam;video;overlay
+Path=
+StartupNotify=false

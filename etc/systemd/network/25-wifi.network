@@ -1,0 +1,8 @@
+[Match]
+Name=wlp1s0
+
+[Network]
+Address=192.168.0.105/24
+Gateway=192.168.0.1
+DNS=1.1.1.1
+
