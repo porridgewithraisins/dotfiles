@@ -30,3 +30,6 @@ if [[ -n $SSH_CONNECTION ]]; then
 fi
 
 alias d="dig +short @dns.toys"
+
+alias c=code
+alias l=ls
