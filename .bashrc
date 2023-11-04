@@ -3,7 +3,7 @@
 #
 
 # If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+[[ $- != *i* ]] && [[ -z $SSH_CONNECTION ]] && return
 
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
@@ -33,3 +33,4 @@ alias d="dig +short @dns.toys"
 
 alias c=code
 alias l=ls
+alias ll='ls -lA'
