@@ -6,12 +6,12 @@
 [[ $- != *i* ]] && return
 
 parse_git_branch() {
-     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+     git branch 2> /dev/null | grep '*' | awk '{print "(" $2 ")"}'
 }
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-PS1="\[\e[38;5;51m\]\u\[\e[0m\] [\w]\[\e[38;5;77m\]\$(parse_git_branch)\[\e[0m\] $ "
+PS1="\[\e[38;5;51m\]\u\[\e[0m\] [\w]\[\e[38;5;77m\] \$(parse_git_branch)\[\e[0m\] $ "
 
 complete -cf sudo
 
