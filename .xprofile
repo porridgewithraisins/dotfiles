@@ -1,3 +1,4 @@
 export EDITOR=nvim
 export PATH="$PATH:/home/sandy/scripts"
 export PATH="$PATH:/home/sandy/.local/bin"
+export XKB_DEFAULT_OPTIONS=caps:escape
