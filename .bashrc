@@ -18,19 +18,65 @@ complete -cf sudo
 alias rm="rm -i"
 
 shopt -s histappend
-export HISTCONTROL=ignorespace
-export HISTFILESIZE=10000
+shopt -s cmdhist
+export HISTCONTROL=ignoreboth
+export HISTFILESIZE=1000000
 export HISTSIZE=${HISTFILESIZE}
-
+export HISTTIMEFORMAT="%d/%m/%y %T "
+export HISTIGNORE="history:ls:l:ll:pwd:exit:clear"
 
 stty werase \^H
 
-if [[ -n $SSH_CONNECTION ]]; then
+if test $SSH_CONNECTION; then
     PS1="($(cat /etc/hostname)) $PS1"
+fi
+
+if ! ps ax | grep ssh-agent | grep -qv grep; then
+    eval $(ssh-agent -s)
+    ssh-add
+elif ! ssh-add -l > /dev/null; then
+    ssh-add
 fi
 
 alias d="dig +short @dns.toys"
 
-alias c="code ."
 alias l=ls
 alias ll='ls -lA'
+alias e=nvim
+alias cat="bat --style=plain"
+
+export HOST="$HOSTNAME"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH=$BUN_INSTALL/bin:$PATH
+
+function ocr(){
+    magick - -monochrome -negate - | tesseract stdin stdout 2>/dev/null
+}
+
+alias vtxt='getcp text/plain'
+alias vjpg='getcp image/jpeg'
+alias vpng='getcp image/png'
+alias ctxt='putcp text/plain -'
+alias cjpg='putcp image/jpeg -'
+alias cpng='putcp image/png -'
+
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
+export BAT_THEME="Catppuccin Macchiato"
+
+function pretty_tail() {
+    bat --paging=never --style=plain -l log
+}
+
+alias icat="kitten icat"
+
+PROMPT_COMMAND=("history -a" "history -c" "history -r")
+
+shopt -s globstar
+
+alias gca='git commit --amend'
+alias gcan='git commit --amend --no-edit'
+
+alias open=xdg-open
