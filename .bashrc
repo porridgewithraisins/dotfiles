@@ -51,7 +51,7 @@ export HOST="$HOSTNAME"
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
 
-function ocr(){
+function ocr() {
     magick - -monochrome -negate - | tesseract stdin stdout 2>/dev/null
 }
 
@@ -79,4 +79,6 @@ shopt -s globstar
 alias gca='git commit --amend'
 alias gcan='git commit --amend --no-edit'
 
-alias open=xdg-open
+function open() {
+    xdg-open "$@" &> /dev/null
+}
