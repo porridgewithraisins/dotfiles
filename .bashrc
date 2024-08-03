@@ -82,3 +82,5 @@ alias gcan='git commit --amend --no-edit'
 function open() {
     xdg-open "$@" &> /dev/null
 }
+
+source <(fzf --bash)
