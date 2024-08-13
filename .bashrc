@@ -15,7 +15,7 @@ PS1="\[\e[38;5;51m\]\u\[\e[0m\] [\w]\[\e[38;5;77m\]\$(parse_git_branch)\[\e[0m\]
 
 complete -cf sudo
 
-alias rm="rm -i"
+alias rm="rm -I"
 
 shopt -s histappend
 shopt -s cmdhist
