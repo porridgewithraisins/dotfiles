@@ -2,5 +2,3 @@ export EDITOR=nvim
 export PATH="$PATH:/home/sandy/scripts"
 export PATH="$PATH:/home/sandy/.local/bin"
 export JAVA_HOME="/usr/lib/jvm/default"
-export XKB_DEFAULT_OPTIONS=caps:escape
-xset -b

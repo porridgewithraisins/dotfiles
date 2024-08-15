@@ -84,3 +84,16 @@ function open() {
 }
 
 source <(fzf --bash)
+
+
+function weather() {
+    while true; do
+      curl -s wttr.in/IIT+Madras?0 | head -n 7
+      sleep 60
+      printf "\r\033[7A"
+    done
+}
+
+function latexloop() {
+    latexmk -pdf -pvc -emulate-aux-dir -aux-directory=/tmp/latexcrap "$@"
+}
