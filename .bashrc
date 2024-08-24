@@ -99,4 +99,12 @@ function latexloop() {
     latexmk -pdf -pvc -emulate-aux-dir -aux-directory=/tmp/latexcrap "$@"
 }
 
+function thought() {
+    echo "$@" >> research/thoughts
+}
+
+function save() {
+    echo "$@" >> research/reading
+}
+
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
