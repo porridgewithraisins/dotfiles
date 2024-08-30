@@ -15,7 +15,7 @@ PS1="\[\e[38;5;51m\]\u\[\e[0m\] [\w]\[\e[38;5;77m\]\$(parse_git_branch)\[\e[0m\]
 
 complete -cf sudo
 
-alias rm="rm -I"
+alias rm="rm -i"
 
 shopt -s histappend
 shopt -s cmdhist
@@ -100,11 +100,11 @@ function latexloop() {
 }
 
 function thought() {
-    echo "$@" >> research/thoughts
+    echo "$@" >> ~/research/thoughts
 }
 
 function save() {
-    echo "$@" >> research/reading
+    echo "$@" >> ~/research/reading
 }
 
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
