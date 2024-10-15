@@ -51,6 +51,9 @@ export HOST="$HOSTNAME"
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
 
+export GOPATH="$HOME/go"
+export PATH="$PATH:$HOME/bin:$GOPATH/bin"
+
 function ocr() {
     magick - -monochrome -negate - | tesseract stdin stdout 2>/dev/null
 }
