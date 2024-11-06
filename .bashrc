@@ -104,6 +104,8 @@ function latexloop() {
     latexmk -pdf -pvc -emulate-aux-dir -aux-directory=/tmp/latexcrap "$@"
 }
 
+alias latexmk='latexmk -pdf -emulate-aux-dir -aux-directory=/tmp/latexcrap'
+
 function thought() {
     echo "$@" >> ~/research/thoughts
 }
