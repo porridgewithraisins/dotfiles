@@ -75,13 +75,25 @@ function pretty_tail() {
 
 alias icat="kitten icat"
 
-PROMPT_COMMAND=("history -a" "history -c" "history -r")
+PROMPT_COMMAND=("history -a" "history -c" "history -r" "$PROMPT_COMMAND")
+
+bind Space:magic-space
+
+set -o noclobber
+shopt -s checkwinsize
+PROMPT_DIRTRIM=2
+
+shopt -s autocd
+shopt -s dirspell
+shopt -s cdspell
+shopt -s cdable_vars
+
+CDPATH="~"
+function cd() { builtin cd "$@" > /dev/null || return; } # because if you set CDPATH, cd starts printing the directory it goes to
+# so as to disambiguate for people without pwd in prompt
 
 shopt -s globstar
 
-alias gca='git commit --amend'
-alias gcan='git commit --amend --no-edit'
-alias gs='git status'
 alias SBS=DELTA_FEATURES+=side-by-side
 
 function open() {
