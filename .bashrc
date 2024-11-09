@@ -20,19 +20,19 @@ alias rm="rm -i"
 shopt -s histappend
 shopt -s cmdhist
 export HISTCONTROL=ignoreboth
-export HISTFILESIZE=1000000
-export HISTSIZE=${HISTFILESIZE}
+export HISTFILESIZE=-1
+export HISTSIZE=-1
 export HISTTIMEFORMAT="%d/%m/%y %T "
 export HISTIGNORE="history:ls:l:ll:pwd:exit:clear"
 
 stty werase \^H
 
-if test $SSH_CONNECTION; then
+if test "$SSH_CONNECTION"; then
     PS1="($(cat /etc/hostname)) $PS1"
 fi
 
-if ! ps ax | grep ssh-agent | grep -qv grep; then
-    eval $(ssh-agent -s)
+if ! pgrep ssh-agent > /dev/null; then
+    eval "$(ssh-agent ss)"
     ssh-add
 elif ! ssh-add -l > /dev/null; then
     ssh-add
@@ -82,6 +82,7 @@ shopt -s globstar
 alias gca='git commit --amend'
 alias gcan='git commit --amend --no-edit'
 alias gs='git status'
+alias SBS=DELTA_FEATURES+=side-by-side
 
 function open() {
     xdg-open "$@" &> /dev/null
