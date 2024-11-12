@@ -44,6 +44,7 @@ alias l=ls
 alias ll='ls -lA'
 alias e=nvim
 alias cat="bat --style=plain"
+alias less="less -R"
 
 export HOST="$HOSTNAME"
 
@@ -54,24 +55,20 @@ export PATH=$BUN_INSTALL/bin:$PATH
 export GOPATH="$HOME/go"
 export PATH="$PATH:$HOME/bin:$GOPATH/bin"
 
-function ocr() {
-    magick - -monochrome -negate - | tesseract stdin stdout 2>/dev/null
-}
+ocr() { magick - -monochrome -negate - | tesseract stdin stdout 2>/dev/null; }
 
-alias vtxt='getcp text/plain'
-alias vjpg='getcp image/jpeg'
-alias vpng='getcp image/png'
-alias ctxt='putcp text/plain -'
-alias cjpg='putcp image/jpeg -'
-alias cpng='putcp image/png -'
+hold() { local input; input="$(cat)"; "$@" <<< "$input"; }
+
+vtxt() { getcp text/plain - ; }
+vjpg() { getcp image/jpeg - ; }
+vpng() { getcp image/png - ; }
+ctxt() { putcp text/plain -; }
+cjpg() { putcp image/jpeg -; }
+cpng() { putcp image/png -; }
 
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 export BAT_THEME="Catppuccin Macchiato"
-
-function pretty_tail() {
-    bat --paging=never --style=plain -l log
-}
 
 alias icat="kitten icat"
 
@@ -96,9 +93,7 @@ shopt -s globstar
 
 alias SBS=DELTA_FEATURES+=side-by-side
 
-function open() {
-    xdg-open "$@" &> /dev/null
-}
+open() { xdg-open "$@" &> /dev/null; }
 
 source <(fzf --bash)
 
@@ -106,25 +101,19 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && (echo terminal; exit 
 
 function weather() {
     while true; do
-      if curl -s wttr.in/IIT+Madras?0; then
-          sleep 60
-          printf "\r\033[7A"
-      fi
-    done
+        if curl -s wttr.in/IIT+Madras?0; then
+            printf "\r\033[7A"
+        fi
+    sleep 60
+done
 }
 
-function latexloop() {
-    latexmk -pdf -pvc -emulate-aux-dir -aux-directory=/tmp/latexcrap "$@"
-}
+latexloop() { latexmk -pdf -pvc -emulate-aux-dir -aux-directory=/tmp/latexcrap "$@"; }
 
 alias latexmk='latexmk -pdf -emulate-aux-dir -aux-directory=/tmp/latexcrap'
 
-function thought() {
-    echo "$@" >> ~/research/thoughts
-}
+thought() { echo "$@" >> ~/research/thoughts; }
 
-function save() {
-    echo "$@" >> ~/research/reading
-}
+save() { echo "$@" >> ~/research/reading; }
 
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).

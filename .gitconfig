@@ -72,3 +72,5 @@
     can = ca --no-edit
     ca = commit --amend
     s = status
+    lo = log --abbrev-commit --oneline
+    loa = lo --oneline --all
