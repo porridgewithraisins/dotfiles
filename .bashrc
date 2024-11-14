@@ -21,6 +21,7 @@ shopt -s histappend
 shopt -s cmdhist
 export HISTCONTROL=ignoreboth
 export HISTFILESIZE=-1
+export HISTFILE=~/.bash_eternal_history
 export HISTSIZE=-1
 export HISTTIMEFORMAT="%d/%m/%y %T "
 export HISTIGNORE="history:ls:l:ll:pwd:exit:clear"
@@ -72,6 +73,7 @@ export BAT_THEME="Catppuccin Macchiato"
 
 alias icat="kitten icat"
 
+PROMPT_COMMAND='echo -en "\033]0;Terminal: $(dirs)\a"'
 PROMPT_COMMAND=("history -a" "history -c" "history -r" "$PROMPT_COMMAND")
 
 bind Space:magic-space
@@ -85,7 +87,7 @@ shopt -s dirspell
 shopt -s cdspell
 shopt -s cdable_vars
 
-CDPATH="~"
+CDPATH=".:~"
 function cd() { builtin cd "$@" > /dev/null || return; } # because if you set CDPATH, cd starts printing the directory it goes to
 # so as to disambiguate for people without pwd in prompt
 
