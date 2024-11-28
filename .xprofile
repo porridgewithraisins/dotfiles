@@ -6,3 +6,4 @@ export PATH="$PATH:/home/sandy/.local/bin"
 export JAVA_HOME="/usr/lib/jvm/default"
 export QT_SCALE_FACTOR=1.75
 export QT_STYLE_OVERRIDE=kvantum
+export GTK_THEME=Nightfox-Dark-Nord
