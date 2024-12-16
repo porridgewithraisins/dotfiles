@@ -1,0 +1,11 @@
+[Match]
+Name=enp3s0f4u1
+
+[Network]
+DHCP=yes
+
+[DHCPv4]
+RouteMetric=2000
+
+[IPv6AcceptRA]
+RouteMetric=2000
