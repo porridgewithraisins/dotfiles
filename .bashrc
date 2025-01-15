@@ -46,6 +46,15 @@ alias ll='ls -lA'
 alias e=nvim
 alias cat="bat --style=plain"
 alias less="less -R"
+alias breakpoint='
+    while read -p"Debugging(Ctrl-d to exit)> " debugging_line
+    do
+        eval "$debugging_line"
+    done
+'
+alias ...=../..
+alias ....=../../..
+alias .....=../../../..
 
 export HOST="$HOSTNAME"
 
