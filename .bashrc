@@ -33,7 +33,7 @@ if test "$SSH_CONNECTION"; then
 fi
 
 if ! pgrep ssh-agent > /dev/null; then
-    eval "$(ssh-agent ss)"
+    eval "$(ssh-agent -s)"
     ssh-add
 elif ! ssh-add -l > /dev/null; then
     ssh-add
