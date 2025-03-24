@@ -30,13 +30,13 @@ stty werase \^H
 
 if test "$SSH_CONNECTION"; then
     PS1="($(cat /etc/hostname)) $PS1"
-fi
-
-if ! pgrep ssh-agent > /dev/null; then
-    eval "$(ssh-agent -s)"
-    ssh-add
-elif ! ssh-add -l > /dev/null; then
-    ssh-add
+else
+    if ! pgrep ssh-agent > /dev/null; then
+        eval "$(ssh-agent -s)"
+        ssh-add
+    elif ! ssh-add -l > /dev/null; then
+        ssh-add
+    fi
 fi
 
 alias d="dig +short @dns.toys"
