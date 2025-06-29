@@ -102,6 +102,11 @@ function cd() { builtin cd "$@" > /dev/null || return; } # because if you set CD
 
 shopt -s globstar
 
+shopt -s histverify
+shopt -s no_empty_cmd_completion
+shopt -s checkhash
+shopt -s checkjobs
+
 alias SBS=DELTA_FEATURES+=side-by-side
 
 open() { xdg-open "$@" &> /dev/null; }
