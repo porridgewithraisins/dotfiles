@@ -55,6 +55,7 @@ alias breakpoint='
 alias ...=../..
 alias ....=../../..
 alias .....=../../../..
+alias hrg='kitten hyperlinked-grep'
 
 export HOST="$HOSTNAME"
 
@@ -62,7 +63,7 @@ export HOST="$HOSTNAME"
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
 
-export GOPATH="$HOME/go"
+# export GOPATH="$HOME/go"
 export PATH="$PATH:$HOME/bin:$GOPATH/bin"
 
 ocr() { magick - -monochrome -negate - | tesseract stdin stdout 2>/dev/null; }
@@ -132,4 +133,8 @@ thought() { echo "$@" >> ~/research/thoughts; }
 
 save() { echo "$@" >> ~/research/reading; }
 
+test -f ~/.bash_extra && source ~/.bash_extra
+
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+
+command -v direnv > /dev/null && eval "$(direnv hook bash)"

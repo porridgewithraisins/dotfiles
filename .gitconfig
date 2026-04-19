@@ -51,11 +51,10 @@
     gpgsign = true
 
 [gpg "ssh"]
-    allowedSignersFile = /home/sandy/.git-allowed-signers
+    allowedSignersFile = ~/.git-allowed-signers
 
 [user]
-    signingkey = /home/sandy/.ssh/id_ed25519.pub
-	name = Santhanam
+    signingkey = ~/.ssh/id_ed25519.pub
 
 [credential]
     helper = libsecret
@@ -75,3 +74,8 @@
     s = status
     lo = log --abbrev-commit --oneline
     loa = lo --oneline --all
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
