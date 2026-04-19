@@ -30,7 +30,7 @@ stty werase \^H
 
 if test "$SSH_CONNECTION"; then
     PS1="($(cat /etc/hostname)) $PS1"
-else
+elif test -n "$DISPLAY"; then
     if ! pgrep ssh-agent > /dev/null; then
         eval "$(ssh-agent -s)"
         ssh-add
