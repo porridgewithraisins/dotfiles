@@ -16,6 +16,8 @@ PS1="\[\e[38;5;51m\]\u\[\e[0m\] [\w]\[\e[38;5;77m\]\$(parse_git_branch)\[\e[0m\]
 complete -cf sudo
 
 alias rm="rm -i"
+alias psa="ps -eo user,pid,ppid,%cpu,%mem,vsz,rss,tty,stat,start,time,command"
+alias psag="ps -eo user,pid,ppid,%cpu,%mem,vsz,rss,tty,stat,start,time,command | grep -v grep"
 
 shopt -s histappend
 shopt -s cmdhist
@@ -58,6 +60,13 @@ alias .....=../../../..
 alias hrg='kitten hyperlinked-grep'
 
 export HOST="$HOSTNAME"
+export EDITOR=nvim
+
+export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:/home/sandy/scripts"
+export PATH="$PATH:/home/sandy/.local/bin"
+export JAVA_HOME="/usr/lib/jvm/default"
+export PATH="/home/sandy/bin.override:$PATH"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
