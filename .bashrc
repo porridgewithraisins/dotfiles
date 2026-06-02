@@ -72,16 +72,15 @@ export PATH="/home/sandy/bin.override:$PATH"
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
 
-# export GOPATH="$HOME/go"
-export PATH="$PATH:$HOME/bin:$GOPATH/bin"
+export PATH="$PATH:$HOME/go/bin"
 
 ocr() { magick - -monochrome -negate - | tesseract stdin stdout 2>/dev/null; }
 
 hold() { local input; input="$(cat)"; "$@" <<< "$input"; }
 
-vtxt() { getcp text/plain - ; }
-vjpg() { getcp image/jpeg - ; }
-vpng() { getcp image/png - ; }
+vtxt() { getcp text/plain; }
+vjpg() { getcp image/jpeg; }
+vpng() { getcp image/png; }
 ctxt() { putcp text/plain -; }
 cjpg() { putcp image/jpeg -; }
 cpng() { putcp image/png -; }
