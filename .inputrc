@@ -3,7 +3,8 @@
 "\e[B": history-search-forward
 "\eOA": history-search-backward
 "\eOB": history-search-forward
-set bell-style visible
+"\C-b": unix-filename-rubout
+set bell-style none
 set completion-ignore-case on
 set colored-stats on
 set blink-matching-paren on

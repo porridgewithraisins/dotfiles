@@ -74,6 +74,7 @@
     s = status
     lo = log --abbrev-commit --oneline
     loa = lo --oneline --all
+
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
